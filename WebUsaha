@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nama Usaha — Profil</title>
+  <meta name="description" content="Profil resmi Nama Usaha — layanan, portfolio, testimoni, dan kontak." />
+
+  <!-- Tailwind Play CDN (good for single-file prototypes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // tailwind config for forms, custom colors
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f2fbff',
+              100: '#e6f7ff',
+              500: '#0ea5a1',
+              700: '#0b6b69'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Simple fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .glass { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); backdrop-filter: blur(6px); }
+    /* simple print rule for contact info */
+    @media print { a[href]:after { content: ""; } }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white text-gray-800 antialiased">
+
+  <!-- NAV -->
+  <header class="fixed w-full z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <!-- logo (simple svg) -->
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-emerald-500 flex items-center justify-center text-white font-bold">NU</div>
+        <div>
+          <div class="text-sm font-semibold">NAMA USAHA</div>
+          <div class="text-xs text-gray-500">Modern • Profesional • Terpercaya</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-brand-700">About</a>
+        <a href="#services" class="hover:text-brand-700">Layanan</a>
+        <a href="#portfolio" class="hover:text-brand-700">Portfolio</a>
+        <a href="#testimonials" class="hover:text-brand-700">Testimoni</a>
+        <a href="#contact" class="hover:text-brand-700">Kontak</a>
+        <button id="themeToggle" class="ml-3 px-3 py-1 rounded-md border text-sm">🌙</button>
+      </nav>
+
+      <!-- mobile menu -->
+      <div class="md:hidden flex items-center gap-2">
+        <button id="mobileOpen" class="p-2 rounded-md glass">☰</button>
+      </div>
+    </div>
+
+    <!-- mobile menu panel -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/80 backdrop-blur p-4 border-b">
+      <div class="flex flex-col gap-2">
+        <a href="#about" class="py-2">About</a>
+        <a href="#services" class="py-2">Layanan</a>
+        <a href="#portfolio" class="py-2">Portfolio</a>
+        <a href="#testimonials" class="py-2">Testimoni</a>
+        <a href="#contact" class="py-2">Kontak</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="pt-24">
+    <section class="relative">
+      <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-20">
+        <div class="space-y-6">
+          <div class="inline-flex items-center gap-3 px-3 py-1 rounded-full bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-700 text-sm font-medium">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            Usaha Lokal — Berkualitas
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            Nama Usaha — Solusi <span class="text-brand-500">Modern</span> untuk Kebutuhan Anda
+          </h1>
+
+          <p class="text-lg text-gray-600 max-w-xl">
+            Kami menyediakan layanan profesional di bidang [sebutkan layanan] dengan pendekatan modern, terukur, dan berfokus pada hasil. <strong>Kualitas</strong> dan <strong>kepuasan pelanggan</strong> adalah prioritas kami.
+          </p>
+
+          <div class="flex gap-3 items-center">
+            <a href="#contact" class="px-5 py-3 bg-brand-500 text-white rounded-lg shadow hover:opacity-95">Hubungi Sekarang</a>
+            <a href="/assets/CV-NamaUsaha.pdf" class="px-4 py-3 rounded-lg border">Download Brosur</a>
+          </div>
+
+          <div class="flex gap-4 mt-4 text-sm text-gray-500">
+            <div class="flex items-center gap-2">
+              <strong class="text-black">⭐ 4.9</strong>
+              <span>• 250+ klien puas</span>
+            </div>
+            <div>• Pengiriman cepat • Layanan 24/7</div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <!-- hero image placeholder -->
+          <div class="w-full h-80 md:h-96 rounded-2xl overflow-hidden shadow-lg">
+            <img id="heroImg" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Hero" class="object-cover w-full h-full" />
+          </div>
+
+          <!-- floating card -->
+          <div class="absolute left-6 md:left-10 bottom-6 md:bottom-8 p-4 bg-white rounded-xl shadow-xl w-64 glass">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="owner" class="w-12 h-12 rounded-full object-cover border" />
+              <div>
+                <div class="text-sm font-semibold">Nama Pemilik</div>
+                <div class="text-xs text-gray-500">Founder & CEO</div>
+              </div>
+            </div>
+            <p class="mt-3 text-sm text-gray-600">Kami percaya proses yang transparan dan solusi yang terukur menghasilkan hubungan jangka panjang.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold">Tentang Kami</h2>
+          <p class="mt-4 text-gray-600">
+            Nama Usaha telah melayani [kategori] sejak [tahun]. Dengan tim profesional, kami menghadirkan solusi lengkap mulai dari [list layanan utama]. Fokus kami: hasil, kecepatan, dan layanan after-sales terbaik.
+          </p>
+
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <li class="flex items-start gap-2"><span class="text-emerald-500">✔</span> Garansi kualitas</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500">✔</span> Konsultasi gratis</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500">✔</span> Tim tersertifikasi</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-500">✔</span> Dukungan 24/7</li>
+          </ul>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#services" class="text-sm text-brand-500 font-medium">Lihat Layanan →</a>
+            <a href="#portfolio" class="text-sm text-gray-600">Lihat Portfolio →</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="p-4 rounded-xl bg-white shadow">
+            <div class="text-sm text-gray-500">Kecepatan</div>
+            <div class="mt-2 font-semibold">Pengiriman 24 jam</div>
+            <p class="text-xs text-gray-500 mt-1">Optimal untuk kebutuhan mendesak</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white shadow">
+            <div class="text-sm text-gray-500">Keahlian</div>
+            <div class="mt-2 font-semibold">Tim tersertifikasi</div>
+            <p class="text-xs text-gray-500 mt-1">Standar internasional</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white shadow">
+            <div class="text-sm text-gray-500">Harga</div>
+            <div class="mt-2 font-semibold">Transparan</div>
+            <p class="text-xs text-gray-500 mt-1">Tanpa biaya tersembunyi</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white shadow">
+            <div class="text-sm text-gray-500">Support</div>
+            <div class="mt-2 font-semibold">24/7</div>
+            <p class="text-xs text-gray-500 mt-1">Bantuan cepat via chat/telepon</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="bg-gray-50 py-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <h3 class="text-xl font-bold">Layanan Kami</h3>
+        <p class="text-gray-600 mt-2">Layanan end-to-end yang dirancang untuk membuat hidup Anda lebih mudah.</p>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+          <div class="p-6 bg-white rounded-2xl shadow hover:scale-105 transition">
+            <div class="text-brand-500 font-semibold">Konsultasi & Desain</div>
+            <h4 class="mt-2 font-bold">Strategi yang berfokus tujuan</h4>
+            <p class="mt-2 text-sm text-gray-600">Analisa, perencanaan, dan desain untuk hasil maksimal.</p>
+          </div>
+
+          <div class="p-6 bg-white rounded-2xl shadow hover:scale-105 transition">
+            <div class="text-brand-500 font-semibold">Implementasi</div>
+            <h4 class="mt-2 font-bold">Eksekusi tanpa repot</h4>
+            <p class="mt-2 text-sm text-gray-600">Tim kami akan menangani semua proses implementasi.</p>
+          </div>
+
+          <div class="p-6 bg-white rounded-2xl shadow hover:scale-105 transition">
+            <div class="text-brand-500 font-semibold">Maintenance & Support</div>
+            <h4 class="mt-2 font-bold">Layanan purna jual</h4>
+            <p class="mt-2 text-sm text-gray-600">Update, perawatan, dan dukungan teknis kapan saja.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="max-w-6xl mx-auto px-4 py-16">
+      <h3 class="text-xl font-bold">Portfolio Terpilih</h3>
+      <p class="text-gray-600 mt-2">Beberapa proyek yang memperlihatkan kualitas dan hasil kerja kami.</p>
+
+      <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- item 1 -->
+        <div class="group relative rounded-xl overflow-hidden shadow cursor-pointer" onclick="openModal(1)">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="w-full h-48 object-cover group-hover:scale-105 transition" alt="Project 1" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-90 flex items-end p-4">
+            <div class="text-white">
+              <div class="font-semibold">Project A</div>
+              <div class="text-xs">Deskripsi singkat project</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 2 -->
+        <div class="group relative rounded-xl overflow-hidden shadow cursor-pointer" onclick="openModal(2)">
+          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="w-full h-48 object-cover group-hover:scale-105 transition" alt="Project 2" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+            <div class="text-white">
+              <div class="font-semibold">Project B</div>
+              <div class="text-xs">Deskripsi singkat project</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- item 3 -->
+        <div class="group relative rounded-xl overflow-hidden shadow cursor-pointer" onclick="openModal(3)">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" class="w-full h-48 object-cover group-hover:scale-105 transition" alt="Project 3" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+            <div class="text-white">
+              <div class="font-semibold">Project C</div>
+              <div class="text-xs">Deskripsi singkat project</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="bg-white py-16">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-xl font-bold">Testimoni Klien</h3>
+        <p class="text-gray-600 mt-2">Pendapat nyata dari klien kami.</p>
+
+        <div id="carousel" class="mt-8 relative">
+          <div class="carousel-inner overflow-hidden rounded-xl shadow p-6">
+            <!-- slides (JS will rotate) -->
+            <div class="slide text-left" data-index="0">
+              <div class="flex items-start gap-4">
+                <img class="w-14 h-14 rounded-full object-cover" src="https://images.unsplash.com/photo-1545996124-1b3d5d38b6f7?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+                <div>
+                  <div class="font-semibold">Rani, CEO Toko X</div>
+                  <div class="text-sm text-gray-600">"Layanan cepat dan hasilnya luar biasa. Sangat direkomendasikan."</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="slide hidden text-left" data-index="1">
+              <div class="flex items-start gap-4">
+                <img class="w-14 h-14 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+                <div>
+                  <div class="font-semibold">Andi, Manager Y</div>
+                  <div class="text-sm text-gray-600">"Profesional dan responsif. Kami puas bekerjasama."</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex justify-center gap-3">
+            <button onclick="prevSlide()" class="px-3 py-1 rounded border">Prev</button>
+            <button onclick="nextSlide()" class="px-3 py-1 rounded border">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto px-4 py-16">
+      <h3 class="text-xl font-bold">Kontak & Konsultasi</h3>
+      <p class="text-gray-600 mt-2">Isi formulir atau hubungi kami langsung untuk penawaran.</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h4 class="font-semibold">Informasi Kontak</h4>
+          <p class="text-sm text-gray-600 mt-2">Jl. Contoh No.123, Kota • Telp: 0812-XXXX-XXXX • email@usaha.com</p>
+
+          <div class="mt-4">
+            <h5 class="text-sm font-medium">Jam Operasional</h5>
+            <p class="text-sm text-gray-600">Senin–Sabtu, 08:00–18:00</p>
+          </div>
+
+          <div class="mt-6 flex gap-3">
+            <a class="px-4 py-2 border rounded" href="https://wa.me/62812xxxxxxx" target="_blank">Chat WhatsApp</a>
+            <a class="px-4 py-2 border rounded" href="mailto:email@usaha.com">Email</a>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow">
+          <form id="contactForm" onsubmit="submitContact(event)" class="space-y-3">
+            <div>
+              <label class="text-sm">Nama</label>
+              <input required name="name" class="w-full border px-3 py-2 rounded mt-1" />
+            </div>
+            <div>
+              <label class="text-sm">Email / Telepon</label>
+              <input required name="contact" class="w-full border px-3 py-2 rounded mt-1" />
+            </div>
+            <div>
+              <label class="text-sm">Pesan</label>
+              <textarea required name="message" class="w-full border px-3 py-2 rounded mt-1"></textarea>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-4 py-2 bg-brand-500 text-white rounded">Kirim Pesan</button>
+              <button type="button" onclick="resetContact()" class="px-4 py-2 border rounded">Reset</button>
+              <div id="contactStatus" class="text-sm text-gray-600"></div>
+            </div>
+            <p class="text-xs text-gray-400 mt-2">Catatan: form ini menggunakan layanan pihak ketiga. Lihat README untuk menghubungkannya ke backend atau EmailJS.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <div class="font-semibold">NAMA USAHA</div>
+          <div class="text-sm text-gray-300">© <span id="year"></span> Nama Usaha. All rights reserved.</div>
+        </div>
+        <div class="text-sm text-gray-300">Follow kami:
+          <a class="ml-2 underline" href="#" target="_blank">Instagram</a>
+          <a class="ml-2 underline" href="#" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Portfolio Modal -->
+  <div id="portfolioModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-xl overflow-hidden max-w-3xl w-full">
+      <div class="flex items-center justify-between p-4 border-b">
+        <div id="modalTitle" class="font-semibold">Project Title</div>
+        <button onclick="closeModal()" class="px-3 py-1">Close</button>
+      </div>
+      <div class="p-6 grid md:grid-cols-2 gap-4">
+        <img id="modalImg" src="" alt="modal" class="w-full h-60 object-cover rounded" />
+        <div>
+          <h4 class="font-bold" id="modalHeading">Heading</h4>
+          <p class="mt-2 text-gray-600" id="modalDesc">Description</p>
+          <ul class="mt-4 text-sm text-gray-600">
+            <li>• Teknologi: ...</li>
+            <li>• Durasi: ...</li>
+            <li>• Hasil: ...</li>
+          </ul>
+          <div class="mt-4">
+            <a id="modalLink" href="#" class="px-4 py-2 bg-brand-500 text-white rounded">Lihat lebih lanjut</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // small util and UI logic
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile menu
+    const mobileOpen = document.getElementById('mobileOpen');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileOpen?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // theme toggle (light/dark)
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const setDark = (d) => {
+      if (d) {
+        root.classList.add('dark');
+        document.body.classList.add('bg-gray-900','text-gray-100');
+        document.body.classList.remove('bg-gradient-to-b','from-gray-50','to-white','text-gray-800');
+        themeToggle.textContent = '☀️';
+      } else {
+        root.classList.remove('dark');
+        document.body.classList.remove('bg-gray-900','text-gray-100');
+        document.body.classList.add('bg-gradient-to-b','from-gray-50','to-white','text-gray-800');
+        themeToggle.textContent = '🌙';
+      }
+      localStorage.setItem('site-dark', d ? '1' : '0');
+    }
+    themeToggle?.addEventListener('click', () => setDark(!document.documentElement.classList.contains('dark')));
+    if (localStorage.getItem('site-dark') === '1') setDark(true);
+
+    // Portfolio modal data
+    const portfolioData = {
+      1: {
+        title: 'Project A',
+        img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',
+        heading: 'Implementasi Sistem X',
+        desc: 'Deskripsi lengkap project A. Tantangan, solusi, teknologi yang dipakai, dan hasil akhir.',
+        link: '#'
+      },
+      2: {
+        title: 'Project B',
+        img: 'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder',
+        heading: 'Digitalisasi Proses Y',
+        desc: 'Deskripsi lengkap project B. Solusi meningkatkan efisiensi 40%',
+        link: '#'
+      },
+      3: {
+        title: 'project C',
+        img: '#',
+        heading: 'Branding & Kampanye Z',
+        desc: 'Deskripsi lengkap project C. Hasil peningkatkan awareness 3x.',
+        link: '#'
+      }
+    };
+    function ipenModal(id) {
+        const d = portfolioData[id];
+        if (!d) return;
+        document.getElementById('moadalTitle').textContent = d.title;
+        document.getElementById('modalImg').src = d.img;
+        document.getElementById('modalHeading').textContent = d.heading;
+        document.getElementById('modalDesc').textContent = d.desc;
+        document.getElementById('modalLink').href = d.link;
+        document.getElementById('portofolioModal').classList.remove('hidden');
+        document.getElementById('potofolioModal').classList.add('flex');
+    }
+    function closeModal() {
+        document.getElementById('portofolioModal').classList.add('hidden');
+        document.getElementById('portofolioModal').classList.remove('flex');
+    }
+
+    // testimonial simple carousel
+    let slideIndex = 0;
+    const slides = Array.from(document.querySelectorAll('@carousel .slide'));
+    function showSlide(i) {
+        slides.forEach(s => s.classList.add('hidden'));
+        slides[i % slides.length].classlist.remove('hidden');
+    }
+    function nextSlide() { slideIndex = (slideIndex + 1) % Slides.length; showSlide(slideIndex); }
+    function prevSlide() { slideIndex = (slideIndex - 1 + slides.length) % slides.length; showSlide(slideIndex); }
+    showSlide(0);
+    setInterval(nextSlide, 6000);
+
+    // contac form submit
+    async function submitContact(e) {
+        e.preventDefault();
+        const form = e.target;
+        const status = document.getElementById('contactStatus');
+        status.textContent = 'mengirim...';
+        const data = {
+            name: formm.name.value,
+            contac: form.contact.value,
+            massage: form.massage.value
+        };
+
+        try {
+            const mailto = 'mailto:email@usaha.com?subject=${encodeURIComponent(`Permintaan dari website: `+data.name)}&body=${encodeURIComponent(data.mmessage + `\\n\\nkontak: ` + data.contact)}';
+            window.location.href = mailto;
+            status.textContent = 'Sukses - memmbuka email klien'
+        } catch (err) {
+            console.error(err);
+            status.textContent = 'Gagal mengirim. Coba lagi nanti';
+        }
+      }
+        function resetContact() {
+         const form = document.getElementById('contactForm');
+            form.reset();
+            document.getElementById('contactStatus');
+        }
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
